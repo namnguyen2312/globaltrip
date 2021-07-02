@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{93F86047-1F76-4F27-9489-AC88BF8C6C9E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NBT.Core.Services</RootNamespace>
+    <AssemblyName>NBT.Core.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationServices\Blog\IBlogPostAboutService.cs" />
+    <Compile Include="ApplicationServices\Blog\IBlogPostService.cs" />
+    <Compile Include="ApplicationServices\Blog\IBlogPostTypeProvider.cs" />
+    <Compile Include="ApplicationServices\Catalog\IAreaService.cs" />
+    <Compile Include="ApplicationServices\Catalog\IContinentService.cs" />
+    <Compile Include="ApplicationServices\Catalog\ICountryRegionService.cs" />
+    <Compile Include="ApplicationServices\Catalog\IStateProvinceService.cs" />
+    <Compile Include="ApplicationServices\Catalog\ITourAttributeService.cs" />
+    <Compile Include="ApplicationServices\Catalog\ITourAttributeValueService.cs" />
+    <Compile Include="ApplicationServices\Catalog\ITourService.cs" />
+    <Compile Include="ApplicationServices\Catalog\ITourTypeProvider.cs" />
+    <Compile Include="ApplicationServices\Immigrant\IVisaService.cs" />
+    <Compile Include="ApplicationServices\Orders\IOrderItemService.cs" />
+    <Compile Include="ApplicationServices\Orders\IOrderService.cs" />
+    <Compile Include="ApplicationServices\Security\IAppGroupService.cs" />
+    <Compile Include="ApplicationServices\Security\IAppRoleService.cs" />
+    <Compile Include="ApplicationServices\Security\IAppUserService.cs" />
+    <Compile Include="ApplicationServices\System\IConverseService.cs" />
+    <Compile Include="ApplicationServices\System\IErrorService.cs" />
+    <Compile Include="ApplicationServices\System\ISettingsProvider.cs" />
+    <Compile Include="ApplicationServices\System\ISettingsService.cs" />
+    <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\IUnitOfWork.cs" />
+    <Compile Include="DomainServices\Blog\IBlogPostAboutRepository.cs" />
+    <Compile Include="DomainServices\Blog\IBlogPostRepository.cs" />
+    <Compile Include="DomainServices\Catalog\IAreaRepository.cs" />
+    <Compile Include="DomainServices\Catalog\IContinentRepository.cs" />
+    <Compile Include="DomainServices\Catalog\ICountryRegionRepository.cs" />
+    <Compile Include="DomainServices\Catalog\IStateProvinceRepository.cs" />
+    <Compile Include="DomainServices\Catalog\ITourAttributeRepository.cs" />
+    <Compile Include="DomainServices\Catalog\ITourAttributeValueRepository.cs" />
+    <Compile Include="DomainServices\Catalog\ITourRepository.cs" />
+    <Compile Include="DomainServices\Immigrant\IVisaRepository.cs" />
+    <Compile Include="DomainServices\Orders\IOrderItemRepository.cs" />
+    <Compile Include="DomainServices\Orders\IOrderRepository.cs" />
+    <Compile Include="DomainServices\Security\IAppGroupRepository.cs" />
+    <Compile Include="DomainServices\Security\IAppRoleGroupRepository.cs" />
+    <Compile Include="DomainServices\Security\IAppRoleRepository.cs" />
+    <Compile Include="DomainServices\Security\IAppUserGroupRepository.cs" />
+    <Compile Include="DomainServices\Security\IAppUserRepository.cs" />
+    <Compile Include="DomainServices\Security\IPermissionProvider.cs" />
+    <Compile Include="DomainServices\System\IConverseRepository.cs" />
+    <Compile Include="DomainServices\System\IErrorRepository.cs" />
+    <Compile Include="DomainServices\System\ISettingsRepository.cs" />
+    <Compile Include="IService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NBT.Core.Domain\NBT.Core.Domains.csproj">
+      <Project>{E3A4AA22-C7AA-47C2-8EDD-249227069DF9}</Project>
+      <Name>NBT.Core.Domains</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

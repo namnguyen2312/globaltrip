@@ -1,0 +1,88 @@
+﻿<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chức năng</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <button class="btn btn-success" ui-sref="addAppUser"><i class="fa fa-plus"></i> Thêm mới</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="input-group">
+                                <input type="text" id="txtSearch" ng-model="filterExpression" class="form-control" ng-enter="search()" placeholder="Nhập từ khóa...">
+                                <span class="input-group-btn">
+                                    <input type="button" class="btn btn-primary" ng-click="search()" value="Tìm">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary">Hiển thị</button>
+                                </span>
+                                <select ng-model="pageSize" class="form-control">
+                                    <option value="20" selected>20</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Danh sách tài khoản</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 20%">Tên người dùng</th>
+                            <th>Tài khoản</th>
+                            <th>Ngày tạo</th>
+                            <th>Email</th>
+                            <th>Đặt lại mật khẩu</th>
+                            <th style="width: 10%">#</th>
+                        </tr>
+                        <tr ng-repeat="item in data">
+                            <td><a ui-sref="editAppUser({id:item.Id})">{{item.FullName}}</a></td>
+                            <td><a ui-sref="editAppUser({id:item.Id})">{{item.UserName}}</a></td>
+                            <td>{{item.CreatedDate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+                            <td>{{item.Email}}</td>
+                            <td style="text-align:center">
+                                <button class="btn btn-sm btn-primary" ng-click="resetPassword(item.Id)"><i class="fa fa-retweet"></i></button>
+                            </td>
+                            <td style="text-align:center">
+                                <a ui-sref="editAppUser({id:item.Id})" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <button class="btn btn-sm btn-danger" ng-click="deleteItem(item.Id)"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                    <div ng-if="loading">
+                        <div class="col-xs-4"></div>
+                        <div class="col-xs-4">
+                            <i class="fa fa-refresh fa-4x fa-spin"></i> <label class="label label-primary">Đang tải...</label>
+                        </div>
+                        <div class="col-xs-4"></div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)"></pager-directive>
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+    <!-- /.row -->
+</section>

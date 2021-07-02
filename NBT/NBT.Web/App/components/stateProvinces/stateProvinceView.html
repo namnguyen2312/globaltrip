@@ -1,0 +1,74 @@
+﻿<section class="content">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Thông tin thành phố</h3>
+        </div>
+        <form class="form-horizontal" novalidate name="frm" role="form">
+            <div class="box-body">
+                <div class="form-group" ng-class="{ 'has-error' : frm.CountryRegion.$invalid && !frm.CountryRegion.$pristine }">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Quốc gia</label>
+                    <div class="col-sm-10">
+                        <ui-select ng-required="true" ng-model="data.CountryRegionId" name="CountryRegion" theme="bootstrap" style="min-width: 300px;" title="Chọn quốc gia">
+                            <ui-select-match allow-clear="true" placeholder="Chọn quốc gia">{{$select.selected.Name}}</ui-select-match>
+                            <ui-select-choices repeat="item.Id as item in countryRegions | filter: $select.search">
+                                <div ng-bind-html="item.Name | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : frm.area.$invalid && !frm.area.$pristine }">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Vùng miền VN</label>
+                    <div class="col-sm-10">
+                        <ui-select ng-model="data.AreaId" name="area" theme="bootstrap" style="min-width: 300px;" title="Chọn vùng miền VN">
+                            <ui-select-match allow-clear="true" placeholder="Vùng miền VN">{{$select.selected.Name}}</ui-select-match>
+                            <ui-select-choices repeat="item.Id as item in areas | filter: $select.search">
+                                <div ng-bind-html="item.Name | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Tên thành phố</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required name="name" ng-model="data.Name">
+                        <span ng-show="frm.name.$invalid" class="has-error">Nhập tên Tp</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Mã thành phố</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="code" ng-model="data.Code">
+                        <span ng-show="frm.code.$invalid" class="has-error">Nhập mã</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Hình</label>
+                    <div class="col-sm-1">
+                        <ul class="list-inline">
+                            <li><img src="{{data.Image}}" width="100" /></li>
+                        </ul>
+                        <button class="btn btn-success" type="button" ng-click="chooseImage(0)">Choose image</button>
+                        <input type="hidden" class="form-control" name="Image" ng-model="data.Image">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="ishow" ng-model="data.IsShow" ng-checked="data.IsShow"> Hiển thị
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <a ui-sref="stateProvinces" class="btn btn-default">Hủy bỏ</a>
+                <button type="button" ng-click="save()" class="btn btn-info pull-right" ng-disabled="frm.$invalid">Lưu</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->

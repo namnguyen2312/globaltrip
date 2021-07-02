@@ -1,0 +1,65 @@
+﻿@model  NBT.Web.Framework.Models.WebSettingsVm
+<div class="div-box">
+    <footer id="footer-wrapper">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 mt40-1">
+                        <div>
+                            <h4>@Model.CompanyName</h4>
+                            <div class="icon-info">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <p>@Model.Address</p>
+                            </div>
+                            <div class="icon-info">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <p>@Model.Phone</p>
+                            </div>
+                            <div class="icon-info">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <p>@Model.CompanyEmail</p>
+                            </div>
+                            <ul id="social-footer">
+                                let's connect:
+                                <li><a href="@Model.Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="@Model.Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="@Model.Instagram"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 mt40-1">
+                        <div class="footer-col footer-1-col-2">
+                            <h4>@Model.CompanyName1</h4>
+                            <div class="icon-info">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <p>@Model.Address1</p>
+                            </div>
+                            <div class="icon-info">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <p>@Model.Phone1</p>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-md-4 col-sm-4 mt40-1" style="display:none">
+                        <div class="footer-col footer-1-col-2">
+                            <h4>CÔNG TY TNHH THƯƠNG MẠI & DỊCH VỤ DU LỊCH LỮ HÀNH TOÀN CẦU</h4>
+                            <div class="icon-info">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <p>482/1 Nơ Trăng Long, Phường 13, Q. Bình Thạnh, Tp HCM</p>
+                            </div>
+                            <div class="icon-info">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <p>0902456554 – 0985011402</p>
+                            </div>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">GTrip © 2017 Copyright, All Right Reserved 2017 Designed by <span class="company-trademark">GTrip</span></p>
+            </div>
+        </div>
+    </footer>
+</div>

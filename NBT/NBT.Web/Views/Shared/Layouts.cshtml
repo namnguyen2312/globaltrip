@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <meta id="metaKeywords" name="keywords" content="@ViewBag.Keyword" />
+    <meta id="metaDescription" name="description" content="@ViewBag.Description" />
+    <meta name="author" content="Global Trip">
+    @RenderSection("Metaog", false)
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Web Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
+    @*<link href="~/Assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/jquery.mmenu/jquery.mmenu.css" rel="stylesheet" />
+    <link href="~/Assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Assets/Swiper-4.0.6/dist/css/swiper.min.css" rel="stylesheet" />
+    <link href="~/Assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    <link href="~/Assets/accordion-menu/css/style.css" rel="stylesheet" />
+
+    <link href="~/Assets/libs/selects2/select2.min.css" rel="stylesheet" />
+    <link href="~/Assets/client/css/style.css" rel="stylesheet" />*@
+    @System.Web.Optimization.Styles.Render("~/Content/css");
+</head>
+<body class="home main-home">
+    @{Html.RenderAction("Header", "Common", new { style = ViewBag.StyleHeader });}
+    @RenderBody()
+    @{Html.RenderAction("Footer", "Common");}
+
+    <!-- .mv-site-->
+    <div><a class="skype" href="skype:tuyen.nguyen@globalopentrip.com?chat"></a></div>
+    <div class="popup-wrapper">
+    </div>
+    <!-- .popup-wrapper-->
+    <div class="click-back-top-body">
+        <button type="button" class="sn-btn sn-btn-style-17 sn-back-to-top fixed-right-bottom"><i class="btn-icon fa fa-angle-up"></i></button>
+    </div>
+    @*<script src="~/Assets/Swiper-4.0.6/dist/js/swiper.min.js"></script>*@
+    <script src="~/Assets/jquery/dist/jquery.min.js"></script>
+    @*<script src="~/Assets/jquery.mmenu/jquery.mmenu.js"></script>*@
+    @*<script src="~/Assets/libs/selects2/select2.min.js"></script>*@
+
+    @System.Web.Optimization.Scripts.Render("~/Scripts/footers")
+
+    @RenderSection("footerJS", required: false)
+
+</body>
+</html>

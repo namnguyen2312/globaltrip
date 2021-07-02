@@ -1,0 +1,101 @@
+﻿@model NBT.Web.Framework.Core.PaginationSet<NBT.Core.Domain.Blog.BlogPost>
+@{
+    ViewBag.StyleHeader = "header header-style-2";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+
+    var baseUrl = "http://{0}";
+    baseUrl = string.Format(baseUrl, HttpContext.Current.Request.Url.Host);
+    var urlShare = HttpContext.Current.Request.Url.OriginalString;
+}
+
+
+@section Metaog{
+    @if (Model.Count > 0)
+    {
+        <meta property="og:image" content="@baseUrl@Model.Items.ToList()[0].Image" />
+        <meta property="og:site_name" content="Globalopentrip.com/" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="300" />
+        <meta property="og:url" content="@baseUrl" />
+    }
+}
+
+<div id="example-wrapper">
+    @Html.Partial("Navigation")
+
+    <div class="div-box mb">
+        <div class="blog-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3">
+                        <div class="blog-wrap">
+                            @{Html.RenderAction("BlogPostNews", "Blog");}
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9">
+                        <div class="blog-wrap">
+                            @foreach (var item in Model.Items)
+                            {
+                                <div class="blog-inner">
+                                    <a href="/blog/detail/@item.Alias"><img class="img-responsive" src="@item.Image" alt="@item.Title" style="width:848px; height:318px"></a>
+                                    <div class="blog-info">
+                                        <div class="blog-title">
+                                            <h3><a href="/blog/detail/@item.Alias">@item.Title</a></h3>
+                                            <span><i class="fa fa-calendar" aria-hidden="true"></i>@item.CreatedDate.Value.ToString("dd-MM-yyyy")</span>
+                                            <span><i class="fa fa-user" aria-hidden="true"></i> Admin</span>
+                                        </div>
+                                        <p>@item.ShortContent</p>
+                                        <div class="link float-right">
+                                            <a href="/blog/detail/@item.Alias" class="button1">Đọc Thêm</a>
+                                            <ul class="share_social" data-href="@urlShare">
+                                                Chia sẽ:
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                        <div class="col-md-12 col-sm-12 hpagination">
+                            <nav class="page-navigation">
+                                <ul class="pagination1">
+                                    @if (Model.TotalPages > 1)
+                                    {
+                                        var startPageIndex = Math.Max(1, Model.Page - 5 / 2);
+                                        var endPageIndex = Math.Min(Model.TotalPages, Model.Page + 5 / 2);
+                                        if (Model.Page > 1)
+                                        {
+                                            <li><a href="?pageIndex=@(Model.Page-1)"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+
+                                        }
+                                        for (int i = startPageIndex; i <= endPageIndex; i++)
+                                        {
+                                            if (Model.Page == i)
+                                            {
+                                                <li class="active"><a href="?pageIndex=@i">@i</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a href="?pageIndex=@i">@i</a></li>
+                                            }
+                                        }
+                                        if (Model.Page < Model.TotalPages)
+                                        {
+
+                                            <li><a href="?pageIndex=@(Model.Page+1)"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                        }
+                                    }
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

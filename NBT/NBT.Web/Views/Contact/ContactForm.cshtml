@@ -1,0 +1,35 @@
+﻿@model NBT.Web.Framework.Models.Contact.ContactFormVm
+<div class="div-box mb">
+    <div class="form-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="contact-wrap-form">
+                        <div class="contact-form">
+                            <h2>Gửi mail để được hỗ trợ</h2>
+                            <p>Để giúp quý khách có được những cảm nhận và phục vụ tốt nhất. Vui lòng liên hệ chúng tôi.</p>
+                            <div class="it-text">
+                                <form action="/contact" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <div class="col-md-6">
+                                        @*<input name="Name" type="text" maxlength="64" value="@Model.Name" placeholder="Tên*">*@
+                                        @Html.TextBoxFor(Model => Model.Name, new { placeholder= "Nhập tên của bạn" })
+                                        @Html.ValidationMessageFor(Model => Model.Name)
+                                        <input required="" name="Email" type="email" maxlength="64" value="@Model.Email" placeholder="Email*">
+                                        @Html.ValidationMessageFor(model => model.Email)
+                                        <input name="Title" type="text" maxlength="128" value="@Model.Title" placeholder="Tiêu đề*">
+                                        @Html.ValidationMessageFor(model => model.Title)
+                                    </div>
+                                    <div class="col-md-6">
+                                        <textarea name="MessageBox" placeholder="Tin nhắn" maxlength="1024">@Model.MessageBox</textarea>
+                                        <button type="submit" class="hbtn1">Gửi</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

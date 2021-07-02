@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Main Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="../images/icon/favicon.png" type="image/x-icon">
+
+    <!-- Web Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
+     <!-- Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="../libs/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../libs/Swiper-4.0.6/dist/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="../libs/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../libs/accordion-menu/css/style.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../libs/jquery.mmenu/jquery.mmenu.css"/>
+
+    <!-- Template CSS-->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
+    <!--if lt IE 9
+    script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+    script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+
+    -->
+    <script>
+       //block time-zone
+     function countryTime() {
+        var usdate = moment().tz("America/New_York").format('dddd, MMM DD, YYYY');
+        var ustime = moment().tz("America/New_York").format('HH:mm');
+        var audate = moment().tz("Australia/Sydney").format('dddd, MMM DD, YYYY');
+        var autime = moment().tz("Australia/Sydney").format('HH:mm');
+        var hkdate = moment().tz("Asia/Hong_Kong").format('dddd, MMM DD, YYYY');
+        var hktime = moment().tz("Asia/Hong_Kong").format('HH:mm');
+        var jpdate = moment().tz("Asia/Tokyo").format('dddd, MMM DD, YYYY');
+        var jptime = moment().tz("Asia/Tokyo").format('HH:mm');
+        document.getElementById("usa-date").innerHTML = usdate;
+        document.getElementById("usa-time").innerHTML = ustime;
+        document.getElementById("au-date").innerHTML = audate;
+        document.getElementById("au-time").innerHTML = autime;
+        document.getElementById("hk-date").innerHTML = hkdate;
+        document.getElementById("hk-time").innerHTML = hktime;
+        document.getElementById("jp-date").innerHTML = jpdate;
+        document.getElementById("jp-time").innerHTML = jptime;
+      }
+      countryTime();
+      setInterval(countryTime, 10000);
+
+    </script>
+    <script type="text/javascript" src="../libs/Swiper-4.0.6/dist/js/swiper.min.js"></script>
+  </head>
+  <body class="home main-home">
+    <!-- <div id="timing">asdasd</div> -->
+    <div id="preloaderKDZ"></div>
+    <div class="gtrip-site">
+      <header class="header header-style-1">
+        <div class="top-bar">
+          <div class="container">
+            <div class="row">
+              <div class="top-sidebar top-bar-left col-md-8">
+                <aside id="text-11" class="widget widget_text">
+                  <div class="textwidget">
+                    <i class="fa fa-envelope" aria-hidden="true"></i> info@globalopentrip.com <i style="margin-left: 15px" class="fa fa-phone" aria-hidden="true"></i> +(84) 985-011-402
+                  </div>
+                </aside>
+              </div>
+              <div class="top-sidebar top-bar-right col-md-4">
+                <aside id="text-6" class="widget widget_text">
+                  <div class="textwidget"><a href="">Register</a> | <a href=""><i class="fa fa-sign-out" aria-hidden="true"></i></a></div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header-top header-top-style-1">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="col-md-3 pull-left">
+                  <div class="header-logo">
+                    <h1><a href="index.html"><img src="../images/icon/Logo.png" alt="logo"/></a></h1>
+                  </div>
+                </div>
+                <div class="col-md-9 pull-left">
+                  <div class="header-slogan">Global Trip <span class="slogan">Explore the world by your own creation</span></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="main-nav-wrapper">
+                    <nav id="primary-menu" class="main-nav pull-left">
+                      <ul class="nav">
+                        <li class="menu-item"><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="active menu-item"><a href="tour.html">Tour</a>
+                        </li>
+                        <li class="menu-item"><a href="blog.html">Blog</a>
+                        </li>
+                        <li class="menu-item"><a href="visa.html">Dịch Vụ Visa</a>
+                        </li>
+                        <li class="menu-item"><a href="contact.html">Liên Hệ</a>
+                        </li>
+                      </ul>
+                    </nav>
+                    <div class="pull-right">
+                    <div class="icon-search-menu">
+                      <i class="wicon fa fa-search"></i>
+                      <div id="searchBox" class="hide-search">
+                        <input id="search-ajax" placeholder="Search" type="search"/>
+                        <button><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                    <div class="shopping-cart-icon">
+                      <div class="widget_shopping_cart_content">
+                        <div class="widget_shopping_cart_icon"><i class="wicon fa fa-shopping-bag"></i><span class="total">0</span></div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       <div class="mobile-menu">
+          <div class="col-3 text-left"><a id="primary-menu" href="#"><i class="fa fa-bars"></i></a></div>
+          <div class="col-3 text-center">
+            <div class="logo">
+              <h1><a href="index.html"><img src="../images/icon/mobile-logo.png" alt="logo"/></a></h1>
+            </div>
+          </div>
+          <div class="col-3 text-right">
+            <div class="header-right">
+              <div class="search-button-wrapper header-customize-item style-default">
+                <div class="icon-search-menu">
+                  <i class="wicon1 fa fa-search"></i>
+                  <div id="searchBox1" class="hide-search" >
+                    <input id="search-ajax" placeholder="Search" type="search"/>
+                    <button><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav id="my-menu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tour.html">Tour</a>
+              <ul>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="">Dich Vu</a></li>
+                <li><a href="visa.html">Visa</a></li>
+              </ul>
+            </li>
+            <li><a href="contact.html">Lien He</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="example-wrapper">
+        <div class="div-box">
+          <div class="swiper-container main-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="../images/eiffel-tower-seine-river-1.jpg" alt="">
+                <div class="slider-content">
+                  <h2>Big deal for summer</h2>
+                  <h1>FRANCE - ITALIA - GERMANY</h1>
+                  <h5>20 days - 15.000.000 VNĐ</h5>
+                  <div class="btn-container"><a href="#" class="button sweep-to-right">Chi Tiết</a></div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img src="../images/8a7b777960b4b7c2ed819cbe2b205434.jpg" alt="">
+                <div class="slider-content">
+                  <h2>Big deal for summer</h2>
+                  <h1>FRANCE - ITALIA - GERMANY</h1>
+                  <h5>20 days - 15.000.000 VNĐ</h5>
+                  <div class="btn-container"><a href="#" class="button sweep-to-right">Chi Tiết</a></div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img src="../images/0003634_koh-samui.jpeg" alt="">
+                <div class="slider-content">
+                  <h2>Big deal for summer</h2>
+                  <h1>FRANCE - ITALIA - GERMANY</h1>
+                  <h5>20 days - 15.000.000 VNĐ</h5>
+                  <div class="btn-container"><a href="#" class="button sweep-to-right">Chi Tiết</a></div>
+                </div>
+              </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
+          </div>
+        </div>
+
+        <div class="div-box mt mb">
+          <div class="home-navigation">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <div class="home-services-scroll">
+                    <div class="home-services-scrollx">
+                      <div class="home-navigation-content domestic pull-left">
+                        <a href="">
+                          <img src="../images/icon/vietnam.png" alt="product1" class=""/><span class="home-navigation-text">Tour </br> Trong Nước</span>
+                        </a>
+                      </div>
+                      <div class="home-navigation-content oversea pull-left">
+                        <a href="#">
+                          <img src="../images/icon/earth.png" alt="product1" class=""/>
+                          <span class="home-navigation-text">Tour </br> Ngoai Nuoc</span>
+                        </a>
+                      </div>
+                      <div class="home-navigation-content booking pull-left">
+                        <div class="plane mb20">
+                          <a href="">
+                            <img src="../images/icon/plane.png" alt="product1" class=""/>
+                            <span class="home-navigation-text">Ve May Bay</span>
+                          </a>
+                        </div>
+                        <div class="clearfix">
+                          <div class="train pull-left">
+                            <a href="">
+                              <img src="../images/icon/train.png" alt="product1" class=""/>
+                              <span class="home-navigation-text">Book Vé</span>
+                            </a>
+                          </div>
+                          <div class="bus pull-right">
+                            <a href="">
+                              <img src="../images/icon/bus.png" alt="product1" class=""/><span class="home-navigation-text">Book Vé</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="home-navigation-content ticket pull-left">
+                        <a href=""><span class="home-navigation-text">Ve tham quan / Ghep tour tai diem</span>
+                        </a>
+                      </div>
+                      <div class="home-navigation-content information" style="margin-right: 0px;">
+                        <div class="visa mb20">
+                          <a href="">
+                            <img src="../images/icon/visa.png" alt="product1" class=""/>
+                          </a>
+                        </div>
+                        <div class="hotel">
+                          <a href="">
+                            <img src="../images/icon/hotel.png" alt="product1" class=""/><span class="home-navigation-text">Khach San</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="div-box mb">
+          <div class="home-special-services">
+            <div class="container">
+              <h2 class="title-style text-center mb45"><span class="title-left">DỊCH VỤ </span><span class="title-right">ĐẶT BIỆT</span><span class="desc">lựa chọn tốt nhất</span></h3>
+              <div class="row">
+                <div class="col-md-9 col-sm-9">
+                  <div class="special-services-wrap">
+                    <div class="col-md-4 col-sm-4 mb20">
+                      <div class="special-services-content">
+                        <h5 class="special-services-title"><a href="">Du lịch tự túc thăm thân nhân</a></h5>
+                        <img src="../images/back-packing-thailand.jpg.rend_.tccom_.1280.960.jpg" alt="Indoor"" class="img-responsive"/>
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 mb20">
+                      <div class="special-services-content">
+                        <h5 class="special-services-title"><a href="">Kết nối gia đình</a></h5>
+                        <img src="../images/shutterstock-230116186.jpg" alt="Indoor" class="img-responsive"/>
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 mb20">
+                      <div class="special-services-content">
+                        <h5 class="special-services-title"><a href="">du lịch kết hợp chăm sóc sức khoẻ</a></h5>
+                        <img src="../images/zen-resort-bali.jpg" alt="Indoor" class="img-responsive"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="special-services-wrap">
+                    <div class="col-md-6 col-sm-6 mb20">
+                      <div class="special-services-content">
+                        <h5 class="special-services-title"><a href="">sự kiện nơi bí mật</a></h5>
+                        <img src="../images/secret-place-ocean-view-wallpaper-6535.jpg" alt="Indoor" class="img-responsive"/>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <div class="special-services-content">
+                        <h5 class="special-services-title"><a href="">tổ chức team building</a></h5>
+                        <img src="../images/team-building-don-vi-to-chuc-team-building-chuyen-nghiep-tai-ha-noi-tp-ho-chi-minh.jpg" alt="Indoor" class="img-responsive"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                  <div class="block-wrap">
+                    <div class="block-content b1 clearfix">
+                      <div class="information1 float-left">
+                        <h5 class="block-country">Newyork USA</h5>
+                        <span id="usa-date" class="block-time"></span>
+                        <span class="block-gtm">GTM - 05</span>
+                      </div>
+                      <div class="block float-right">
+                        <span id="usa-time" class="timing"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block-wrap">
+                    <div class="block-content b2 clearfix">
+                      <div class="information1 float-left">
+                        <h5 class="block-country">Sydney Aus</h5>
+                        <span id="au-date" class="block-time"></span>
+                        <span class="block-gtm">GTM + 11</span>
+                      </div>
+                      <div class="block float-right">
+                        <span id="au-time" class="timing"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block-wrap">
+                    <div class="block-content b3 clearfix">
+                      <div class="information1 float-left">
+                        <h5 class="block-country">HK China</h5>
+                        <span id="hk-date" class="block-time"></span>
+                        <span class="block-gtm">GTM + 08</span>
+                      </div>
+                      <div class="block float-right">
+                        <span id="hk-time" class="timing"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block-wrap">
+                    <div class="block-content b4 clearfix">
+                      <div class="information1 float-left">
+                        <h5 class="block-country">Tokyo Japan</h5>
+                        <span id="jp-date" class="block-time"></span>
+                        <span class="block-gtm">GTM + 09</span>
+                      </div>
+                      <div class="block float-right">
+                        <span id="jp-time" class="timing"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="div-box mb">
+          <div class="home-special-event">
+            <div class="container">
+              <h2 class="title-style text-center mb45"><span class="title-left">Sự kiện </span><span class="title-right">ĐẶT BIỆT</span><span class="desc">lựa chọn tốt nhất</span></h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="swiper-container service-slider">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img src="../images/slider.jpeg" alt="">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="../images/slider.jpeg" alt="">
+                      </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="div-box mb">
+          <div class="home-blog">
+            <div class="container">
+              <h2 class="title-style text-center mb45"><span class="title-left">Tin tức </span><span class="title-right">du lịch</span><span class="desc">tin tức mới nhất</span></h3>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="blog-wrapper">
+                    <div class="blog-content">
+                      <img src="../images/0002700_chiang-mai.jpeg" alt="">
+                      <div class="blog-info">
+                        <h3><a href="#">Lễ hội songra truyền thống Thái Lan tại bankok</a></h3>
+                        <span><i class="fa fa-calendar" aria-hidden="true"></i> 15-02-2017</span>
+                        <span><i class="fa fa-user" aria-hidden="true"></i> Admin</span>
+                        <p>Lý Sơn, Quy Nhơn, Nam Du, Bình Ba, Bình Lập hay Cổ Thạch… là những bãi biển đẹp như thiên đường ở Việt Nam mà nếu không đi…</p>
+                        <a href="#" class="readmore">Đọc Thêm</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="blog-wrapper">
+                    <div class="blog-content">
+                      <img src="../images/0002701_pattaya.jpeg" alt="">
+                      <div class="blog-info">
+                        <h3><a href="#">Lễ hội songra truyền thống Thái Lan tại bankok</a></h3>
+                        <span><i class="fa fa-calendar" aria-hidden="true"></i> 15-02-2017</span>
+                        <span><i class="fa fa-user" aria-hidden="true"></i> Admin</span>
+                        <p>Lý Sơn, Quy Nhơn, Nam Du, Bình Ba, Bình Lập hay Cổ Thạch… là những bãi biển đẹp như thiên đường ở Việt Nam mà nếu không đi…</p>
+                        <a href="#" class="readmore">Đọc Thêm</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="blog-wrapper">
+                    <div class="blog-content">
+                      <img src="../images/0004965_hua-hin.jpeg" alt="">
+                      <div class="blog-info">
+                        <h3><a href="#">Lễ hội songra truyền thống Thái Lan tại bankok</a></h3>
+                        <span><i class="fa fa-calendar" aria-hidden="true"></i> 15-02-2017</span>
+                        <span><i class="fa fa-user" aria-hidden="true"></i> Admin</span>
+                        <p>Lý Sơn, Quy Nhơn, Nam Du, Bình Ba, Bình Lập hay Cổ Thạch… là những bãi biển đẹp như thiên đường ở Việt Nam mà nếu không đi…</p>
+                        <a href="#" class="readmore">Đọc Thêm</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="div-box">
+          <footer id="footer-wrapper">
+            <div class="footer-top">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4 col-sm-4 mt40-1">
+                    <div>
+                      <h4>CÔNG TY TNHH THƯƠNG MẠI & DỊCH VỤ DU LỊCH LỮ HÀNH TOÀN CẦU</h4>
+                      <div class="icon-info">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <p>482/1 Nơ Trăng Long, Phường 13, Q. Bình Thạnh, Tp HCM</p>
+                      </div>
+                      <div class="icon-info">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <p>0902456554 – 0985011402</p>
+                      </div>
+                      <div class="icon-info">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <p>info@globalopentrip.com</p>
+                      </div>
+                      <ul id="social-footer">
+                        let's connect:
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-4 mt40-1">
+                    <div class="footer-col footer-1-col-2">
+                      <h4>CÔNG TY TNHH THƯƠNG MẠI & DỊCH VỤ DU LỊCH LỮ HÀNH TOÀN CẦU</h4>
+                      <div class="icon-info">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <p>482/1 Nơ Trăng Long, Phường 13, Q. Bình Thạnh, Tp HCM</p>
+                      </div>
+                      <div class="icon-info">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <p>0902456554 – 0985011402</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-4 mt40-1">
+                    <div class="footer-col footer-1-col-2">
+                      <h4>CÔNG TY TNHH THƯƠNG MẠI & DỊCH VỤ DU LỊCH LỮ HÀNH TOÀN CẦU</h4>
+                      <div class="icon-info">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <p>482/1 Nơ Trăng Long, Phường 13, Q. Bình Thạnh, Tp HCM</p>
+                      </div>
+                      <div class="icon-info">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <p>0902456554 – 0985011402</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <div class="container">
+                <p class="copyright">GTrip © 2017 Copyright, All Right Reserved 2017 Designed by <span class="company-trademark">GTrip</span></p>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+      </div>
+    </div>
+    <!-- .mv-site-->
+    <div><a class="skype" href="skype:hophamthuytien87?chat"></a></div>
+    <div class="popup-wrapper">
+    </div>
+    <!-- .popup-wrapper-->
+    <div class="click-back-top-body">
+      <button type="button" class="sn-btn sn-btn-style-17 sn-back-to-top fixed-right-bottom"><i class="btn-icon fa fa-angle-up"></i></button>
+    </div>
+
+    <!-- Vendor jQuery-->
+    <script type="text/javascript" src="../libs/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../libs/bootstrap-datetimepicker/js/moment.js"></script>
+    <script type="text/javascript" src="../libs/jquery/moment-timezone.min.js"></script>
+    <script type="text/javascript" src="../libs/jquery/moment-timezone-with-data.min.js"></script>
+    <script type="text/javascript" src="../libs/jquery/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../libs/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="../libs/jquery.mmenu/jquery.mmenu.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+  </body>
+</html>

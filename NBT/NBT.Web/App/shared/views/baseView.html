@@ -1,0 +1,140 @@
+﻿
+<div class="wrapper">
+    <header class="main-header" ng-include="'/app/shared/views/header.html'">
+        <!-- Logo -->
+
+    </header>
+    <!-- =============================================== -->
+    <!-- Left side column. contains the sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="/Assets/img/admin/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>CMS</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">Quản lý khu vực</li>
+                <li class="treeview">
+                    <a ui-sref="continents">
+                        <i class="fa fa-files-o"></i>
+                        <span>Danh sách châu lục</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a ui-sref="countryRegions">
+                        <i class="fa fa-files-o"></i>
+                        <span>Danh sách quốc gia</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a ui-sref="areas">
+                        <i class="fa fa-files-o"></i>
+                        <span>Danh sách vùng miền VN</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a ui-sref="stateProvinces">
+                        <i class="fa fa-files-o"></i>
+                        <span>Danh sách thành phố</span>
+                    </a>
+                </li>
+                <li class="header">Quản lý tour</li>
+                <li class="treeview">
+                    <a ui-sref="tourAttributes">
+                        <i class="fa fa-files-o"></i>
+                        <span>Thông tin tour</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a ui-sref="tours">
+                        <i class="fa fa-list-alt"></i>
+                        <span>Danh sách tour</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a ui-sref="orders">
+                        <i class="fa fa-files-o"></i>
+                        <span>Danh sách đặt chỗ</span>
+                    </a>
+                </li>
+                <li class="header">Quản lý Visa</li>
+                <li class="treeview">
+                    <a ui-sref="visas">
+                        <i class="fa fa-list-alt"></i>
+                        <span>Danh sách Visa</span>
+                    </a>
+                </li>
+                <li class="header">Quản lý bài viết</li>
+                <li class="treeview">
+                    <a ui-sref="blogPosts">
+                        <i class="fa fa-list-alt"></i>
+                        <span>Danh sách bài viết</span>
+                    </a>
+                </li>
+                <li class="header">Quản lý hệ thống CMS</li>
+                <li class="treeview">
+                    <a ui-sref="contacts">
+                        <i class="fa fa-cogs"></i>
+                        <span>Danh sách support</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a ui-sref="settings">
+                        <i class="fa fa-cogs"></i>
+                        <span>Cấu hình website</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a ui-sref="appRoles">
+                        <i class="fa fa-sliders"></i>
+                        <span>Danh sách quyền</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a ui-sref="appGroups">
+                        <i class="fa fa-user-o"></i>
+                        <span>Nhóm quyền</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a ui-sref="appUsers">
+                        <i class="fa fa-files-o"></i>
+                        <span>Danh sách tài khoản</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- =============================================== -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div ui-view></div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright &copy; 2017-2018 <a href="https://Gtrip.com.vn">Gtrip</a>.</strong> All rights
+        reserved.
+    </footer>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark" ng-include="'/app/shared/views/sidebar.html'"></aside>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div>
+
+
+

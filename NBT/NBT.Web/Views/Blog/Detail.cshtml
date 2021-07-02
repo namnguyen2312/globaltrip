@@ -1,0 +1,65 @@
+﻿@model NBT.Core.Domain.Blog.BlogPost
+@{
+    ViewBag.Title = Model.TitleSeo;
+    ViewBag.Keyword = Model.KeywordSeo;
+    ViewBag.Description = Model.DescriptionSeo;
+    ViewBag.StyleHeader = "header header-style-2";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+
+    var baseUrl = "http://{0}";
+    baseUrl = string.Format(baseUrl, HttpContext.Current.Request.Url.Host);
+    var urlShare = HttpContext.Current.Request.Url.OriginalString;
+}
+@section Metaog{
+    <meta property="og:image" content="@baseUrl@Model.Image" />
+    <meta property="og:site_name" content="Globalopentrip.com/" />
+    @*<meta property="og:image:secure_url" content="@baseUrl@Model.product.ImageAvatar" />*@
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:url" content="@urlShare" />
+}
+<div id="example-wrapper">
+    @Html.Partial("Navigation")
+
+    <div class="div-box mb">
+        <div class="blog-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3">
+                        <div class="blog-wrap">
+                            @{Html.RenderAction("BlogPostNews", "Blog");}
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9">
+                        <div class="article-wrap">
+                            <article>
+                                <div class="article-head">
+                                    <h3>@Model.Title</h3>
+                                    <span><i class="fa fa-calendar" aria-hidden="true"></i> @Model.CreatedDate.Value.ToString("dd-MM-yyyy")</span>
+                                    <span><i class="fa fa-user" aria-hidden="true"></i> Admin</span>
+                                </div>
+                                <div class="article-content">
+                                    @Html.Raw(Model.FullContent)
+                                </div>
+                                <div class="social-wrapper">
+                                    <ul class="share_social" data-href="@urlShare">
+                                        Chia sẽ:
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </article>
+                            <div class="hleftright">
+                                <a href="" class="pull-left"><i class="fa fa-angle-double-left" aria-hidden="true"></i> bài viết mới</a>
+                                <a href="" class="pull-right"><i class="fa fa-angle-double-right" aria-hidden="true"></i> bài viết củ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,127 @@
+﻿@model IEnumerable<NBT.Web.Framework.Models.Cart.OrderItemVm>
+@{
+    ViewBag.Title = "index";
+    ViewBag.StyleHeader = "header header-style-2";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+    decimal total = 0;
+    foreach (var item in Model)
+    {
+        total += item.Price * item.Quantity;
+    }
+    decimal totalItem = 0;
+}
+
+<div id="example-wrapper">
+    @Html.Partial("Navigation")
+    <div class="div-box mb">
+        <div class="shopping-cart">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="shopping-cart-wrap">
+                            <form class="cart-form">
+                                <table>
+                                    <tr>
+                                        <th>Hình</th>
+                                        <th>Tên</th>
+                                        <th>Ngày khởi hành</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng chỗ</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Cập nhật</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td data-title="Hình"><a href="#" class="image-product"><img class="img-responsive" src="@item.Image" alt="@item.Name" width="180" height="220" /></a></td>
+                                            <td data-title="Tên"><a href="#" class="name-product">@item.Name</a></td>
+                                            <td data-title="Ngày khởi hành"><a href="#" class="name-product">@item.FromDate.ToString("dd-MM-yyyy")</a></td>
+                                            <td data-title="Giá" style="text-align:right"><span class="price">@item.Price.ToString("n0") vnđ</span></td>
+                                            <td data-title="Số lượng">
+                                                <input type="number" style="text-align:right" value="@item.Quantity" id="qty-@item.Guid" min="1" max="30" />
+                                            </td>
+
+                                            <td data-title="Tổng" style="text-align:right">
+                                                <span class="total">
+                                                    @{
+                                                        totalItem = item.Quantity * item.Price;
+                                                    }
+                                                    @totalItem.ToString("n0") vnđ
+                                                </span>
+                                            </td>
+                                            <td data-title="Cập nhật" style="text-align:center" ><a href="#" onclick="refreshItem('@item.Guid');"><i class="fa fa-refresh"></i></a></td>
+                                            <td data-title="Xóa"><a href="#" onclick="removeItem('@item.Guid');"><i class="fa fa-times"></i></a></td>
+                                        </tr>
+                                    }
+                                </table>
+                                <div class="button-cart">
+                                    <div class="button-cart-left">
+                                        <input type="text" placeholder="Coupon code" /><a href="#" class="coupon">Nhập mã khuyến mãi</a>
+                                    </div>
+                                    <div class="button-cart-right">
+                                        <a href="#" class="update-cart">Cập nhật</a>
+                                        <a href="/cart/Checkout" class="process">Đặt vé</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form class="cart-total">
+                                        <h4>Cart Totals</h4>
+                                        <table>
+                                            <tr>
+                                                <td>Tạm tính</td>
+                                                <td><span class="subtotal">@total.ToString("n0")</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tổng tiền</td>
+                                                <td><span class="total">@total.ToString("n0")</span></td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section footerJS{
+    <script>
+        function removeItem(id) {
+            $.ajax({
+                url: '/Cart/DeleteItem',
+                type: 'Delete',
+                data: {
+                    id: id
+                },
+                success: function (result) {
+                    window.location.href = '/Cart/Index';
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        function refreshItem(id) {
+            $.ajax({
+                url: '/Cart/RefreshItem',
+                type: 'Put',
+                data: {
+                    Guid: id,
+                    Quantity: $('#qty-' + id).val()
+                },
+                success: function (result) {
+                    window.location.href = '/Cart/Index';
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+}

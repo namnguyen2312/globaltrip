@@ -1,0 +1,67 @@
+﻿@model NBT.Web.Framework.Models.Catalog.MenuGeographyVm
+@{
+
+}
+<div class="col-md-3 col-sm-3">
+    <div class="tour-category-wrapper">
+
+        <div class="tour-category-content">
+            <div class="tour-title"><span class="country">Du lịch trong nước</span></div>
+            <ul class="cd-accordion-menu1 animated">
+                @foreach (var item in Model.Areas)
+                {
+                    <li class="has-children">
+                        <input type="checkbox" name="groups-@item.Id" id="groups-@item.Id">
+                        <label for="groups-@item.Id">@item.Name</label>
+                        @if (Model.StateProvinces.Where(x => x.AreaId == item.Id).Count() > 0)
+                        {
+                            <ul>
+                                @foreach (var state in Model.StateProvinces.Where(x => x.AreaId == item.Id))
+                                {
+                                    <li><a href="/tour/?stateProvinceId=@state.Id">@state.Name</a></li>
+                                }
+
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="tour-category-content mt20">
+            <div class="tour-title"><span class="country">Du lịch nước ngoài</span></div>
+            <ul class="cd-accordion-menu animated">
+                @foreach (var itemContinent in Model.Continents)
+                {
+                    <li class="has-children">
+                        <input type="checkbox" name="group-@itemContinent.Id" id="group-@itemContinent.Id">
+                        <label for="group-@itemContinent.Id">@itemContinent.Name</label>
+                        @if (Model.CountryRegions.Where(x => x.ContinentId == itemContinent.Id).Count() > 0)
+                        {
+                            <ul>
+                                @foreach (var itemCountry in Model.CountryRegions.Where(x => x.ContinentId == itemContinent.Id && x.Domestic == false))
+                                {
+                                    <li class="has-children">
+                                        <input type="checkbox" name="sub-group-@itemCountry.Id" id="sub-group-@itemCountry.Id">
+                                        <label for="sub-group-@itemCountry.Id">@itemCountry.Name</label>
+                                        @if (Model.StateProvinces.Where(x => x.CountryRegionId == itemCountry.Id).Count() > 0)
+                                        {
+                                            <ul>
+                                                @foreach (var itemState in Model.StateProvinces.Where(x => x.CountryRegionId == itemCountry.Id))
+                                                {
+                                                    <li><a href="/tour/?stateProvinceId=@itemState.Id">@itemState.Name</a></li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul> <!-- cd-accordion-menu -->
+        </div>
+
+
+    </div>
+</div>

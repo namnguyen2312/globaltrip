@@ -1,0 +1,56 @@
+﻿<section class="content">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Thông tin support</h3>
+        </div>
+        <form class="form-horizontal" novalidate name="frm" role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Họ tên</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required name="name" ng-model="data.FullName">
+                        <span ng-show="frm.name.$invalid" class="has-error">Nhập tên</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Nick Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required name="NickName" ng-model="data.NickName">
+                        <span ng-show="frm.NickName.$invalid" class="has-error">Nhập nick name</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Điện thoại</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required name="Phone" ng-model="data.Phone">
+                        <span ng-show="frm.Phone.$invalid" class="has-error">Nhập điện thoại</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required name="Email" ng-model="data.Email">
+                        <span ng-show="frm.Email.$invalid" class="has-error">Nhập email</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="ishow" ng-model="data.IsShow" ng-checked="data.IsShow"> Hiển thị
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <a ui-sref="contacts" class="btn btn-default">Hủy bỏ</a>
+                <button type="button" ng-click="save()" class="btn btn-info pull-right" ng-disabled="frm.$invalid">Lưu</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->

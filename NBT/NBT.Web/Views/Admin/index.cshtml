@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CMSGtrip</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/Assets/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Ionicons/css/ionicons.min.css">
+    <link href="~/Assets/libs/angular-ui-select/dist/select.min.css" rel="stylesheet" />
+    <link href="~/Assets/libs/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/Assets/libs/datepicker/datepicker3.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Assets/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/Assets/css/skins/_all-skins.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        th {
+            text-align: center;
+            color: #ffffff;
+            background-color: #3c8dbc;
+        }
+
+        .input-number {
+            position: relative;
+        }
+
+            .input-number label {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                cursor: pointer;
+                font-weight: normal;
+            }
+
+            .input-number input:focus + label {
+                display: none;
+            }
+    </style>
+    
+</head>
+<body class="hold-transition skin-blue sidebar-mini" ng-app="nbtapp" ng-controller="rootController">
+    <!-- Site wrapper -->
+    <div ui-view></div>
+    <script src="/Assets/jquery/dist/jquery.min.js"></script>
+
+    <script src="/Assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Assets/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/Assets/fastclick/lib/fastclick.js"></script>
+    <script src="~/Assets/libs/input-mask/jquery.inputmask.js"></script>
+    <script src="~/Assets/libs/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="~/Assets/libs/input-mask/jquery.inputmask.extensions.js"></script>
+    <script src="~/Assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/Assets/libs/datepicker/bootstrap-datepicker.js"></script>
+    <!--Angular-->
+    <script src="~/Assets/libs/angular/angular.min.js"></script>
+    <script src="~/App/app.js"></script>
+    <script src="~/Assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="~/Assets/libs/angular-password/angular-password.min.js"></script>
+    <script src="~/Assets/libs/checklist-model/checklist-model.js"></script>
+    <script src="~/Assets/libs/toastr/toastr.min.js"></script>
+    <script src="~/Assets/libs/bootbox/bootbox.js"></script>
+    <script src="~/Assets/libs/ngBootbox/ngBootbox.js"></script>
+    <script src="~/Assets/libs/ckfinder/ckfinder.js"></script>
+    <script src="~/Assets/libs/angular-ui-select/dist/select.min.js"></script>
+    <script src="~/Assets/libs/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="~/Assets/libs/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/libs/ng-ckeditor/ng-ckeditor.js"></script>
+
+    <script src="~/App/shared/modules/nbtapp.common.js"></script>
+    <script src="~/App/shared/services/apiService.js"></script>
+    <script src="~/App/shared/filter/showFilter.js"></script>
+    <script src="~/App/shared/services/commonService.js"></script>
+    <script src="~/App/shared/services/notificationService.js"></script>
+    <script src="~/App/shared/directives/pagerDirective.js"></script>
+
+    <script src="~/App/components/appRoles/appRoles.module.js"></script>
+    <script src="~/App/components/appGroups/appGroups.module.js"></script>
+    <script src="~/App/components/appUsers/appUsers.module.js"></script>
+    <script src="~/App/components/continents/continents.module.js"></script>
+    <script src="~/App/components/countryRegions/countryRegions.module.js"></script>
+    <script src="~/App/components/stateProvinces/stateProvince.module.js"></script>
+    <script src="~/App/components/tourAttributes/tourAttributes.module.js"></script>
+    <script src="~/App/components/tours/tours.module.js"></script>
+    <script src="~/App/components/visas/visas.module.js"></script>
+    <script src="~/App/components/blogPosts/blogPosts.module.js"></script>
+    <script src="~/App/components/areas/areas.module.js"></script>
+    <script src="~/App/components/systems/systems.module.js"></script>
+    <script src="~/App/components/contacts/contacts.module.js"></script>
+    <script src="~/App/components/orders/orders.module.js"></script>
+
+
+    <script src="~/App/components/home/rootController.js"></script>
+    <script src="~/App/components/home/homeController.js"></script>
+    <script src="~/App/components/appRoles/appRolesController.js"></script>
+
+    <script src="~/App/components/appGroups/appGroupsController.js"></script>
+    <script src="~/App/components/appGroups/appGroupAddController.js"></script>
+    <script src="~/App/components/appGroups/appGroupEditController.js"></script>
+
+    <script src="~/App/components/appUsers/appUsersController.js"></script>
+    <script src="~/App/components/appUsers/appUserAddController.js"></script>
+    <script src="~/App/components/appUsers/appUserEditController.js"></script>
+    <script src="~/App/components/appUsers/changePassController.js"></script>
+
+    <script src="~/App/components/continents/continentsController.js"></script>
+    <script src="~/App/components/continents/addContinentController.js"></script>
+    <script src="~/App/components/continents/editContinentController.js"></script>
+
+    <script src="~/App/components/countryRegions/countryRegionsController.js"></script>
+    <script src="~/App/components/countryRegions/addCountryRegionController.js"></script>
+    <script src="~/App/components/countryRegions/editCountryRegionController.js"></script>
+
+    <script src="~/App/components/stateProvinces/stateProvincesController.js"></script>
+    <script src="~/App/components/stateProvinces/addStateProvinceController.js"></script>
+    <script src="~/App/components/stateProvinces/editStateProvinceController.js"></script>
+
+    <script src="~/App/components/tourAttributes/tourAttributesController.js"></script>
+    <script src="~/App/components/tourAttributes/addTourAttributesController.js"></script>
+    <script src="~/App/components/tourAttributes/editTourAttributesController.js"></script>
+
+    <script src="~/App/components/tours/toursController.js"></script>
+    <script src="~/App/components/tours/addTourController.js"></script>
+    <script src="~/App/components/tours/editTourController.js"></script>
+
+    <script src="~/App/components/visas/visasController.js"></script>
+    <script src="~/App/components/visas/addVisaController.js"></script>
+    <script src="~/App/components/visas/editVisaController.js"></script>
+
+    <script src="~/App/components/blogPosts/blogPostsController.js"></script>
+    <script src="~/App/components/blogPosts/addBlogPostController.js"></script>
+    <script src="~/App/components/blogPosts/editBlogPostController.js"></script>
+
+    <script src="~/App/components/areas/addAreaController.js"></script>
+    <script src="~/App/components/areas/editAreaController.js"></script>
+    <script src="~/App/components/areas/areasController.js"></script>
+
+    <script src="~/App/components/systems/settingsController.js"></script>
+
+    <script src="~/App/components/contacts/contactsController.js"></script>
+    <script src="~/App/components/contacts/addContactController.js"></script>
+    <script src="~/App/components/contacts/editContactController.js"></script>
+
+    <script src="~/App/components/orders/ordersController.js"></script>
+    <script src="~/App/components/orders/orderDetailController.js"></script>
+
+    <script src="/Assets/js/adminlte.min.js"></script>
+</body>
+</html>

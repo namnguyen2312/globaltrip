@@ -1,0 +1,47 @@
+﻿<section class="content">
+    <div class="row">
+        <form class="form-horizontal" role="form" novalidate name="frm" ng-submit="save()">
+            <div class="col-md-8">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title">Đổi mật khẩu</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group" ng-class="{ 'has-error' : frm.password.$invalid && !frm.password.$pristine }">
+                            <label class="col-sm-3 control-label">Mật khẩu cũ</label>
+                            <div class="col-sm-9">
+                                <input type="password" name="password" class="form-control"
+                                       required reqired-message="Mật khẩu bắt buộc." ng-model="data.PasswordCurrent" maxlength="32" ng-minlength="6">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : frm.newPass.$invalid && !frm.newPass.$pristine }">
+                            <label class="col-sm-3 control-label">Mật khẩu mới</label>
+                            <div class="col-sm-9">
+                                <input type="password" name="newPass"  class="form-control"
+                                       required reqired-message="Nhập lại mật khẩu." ng-model="data.PasswordNew" maxlength="32" ng-minlength="6">
+                                <span ng-message="passwordMatch" ng-show="frm.newPass.$invalid" class="help-block">Mật khẩu nhập lại không đúng</span>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : frm.rePass.$invalid && !frm.rePass.$pristine }">
+                            <label class="col-sm-3 control-label">Nhập lại mật khẩu mới</label>
+                            <div class="col-sm-9">
+                                <input type="password" name="rePass" match-password="newPass" class="form-control"
+                                       required reqired-message="Nhập lại mật khẩu." ng-model="data.RePass" maxlength="32" ng-minlength="6">
+                                <span ng-message="passwordMatch" ng-show="frm.rePass.$invalid" class="help-block">Mật khẩu nhập lại không đúng</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-10">
+                                <a ui-sref="#" class="btn btn-default">Hủy bỏ</a>
+                                <input type="submit" ng-disabled="frm.$invalid" class="btn btn-primary" value="Lưu lại" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </form>
+    </div>
+    <!-- /.row -->
+</section>

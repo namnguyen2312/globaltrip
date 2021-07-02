@@ -1,0 +1,83 @@
+﻿@model NBT.Core.Domain.Catalog.Dto.TourDto
+@{
+    ViewBag.Title = Model.TitleSeo;
+    ViewBag.Keyword = Model.KeywordSeo;
+    ViewBag.Description = Model.DescriptionSeo;
+    ViewBag.StyleHeader = "header header-style-2";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+<div id="example-wrapper">
+    @Html.Partial("Navigation")
+
+    <div class="div-box mb">
+        <div class="tour-detail-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-md-push-9">
+                        <div class="tour-detail-category-wrapper">
+                            <div class="tour-detail-category-content">
+                                <img class="img-responsive" src="@Model.Image" alt="@Model.Name">
+                                <div class="tour-category-info">
+                                    <h5>@Model.Name</h5>
+                                    <div class="tour-category-list"><span><i class="fa fa-barcode" aria-hidden="true"></i> <strong>Mã tour:</strong> @Model.Code</span></div>
+                                    <div class="tour-category-list"><span><i class="fa fa-calendar" aria-hidden="true"></i> <strong>Ngày khởi hành:</strong> @Model.DayBegin</span></div>
+                                    <div class="tour-category-list">
+                                        <span>
+                                            <i class="fa fa-calculator" aria-hidden="true"></i> <strong>Thời Gian:</strong> @Model.TotalDays Ngày
+                                        </span>
+                                    </div>
+                                    <div class="tour-category-list"><span><i class="fa fa-money" aria-hidden="true"></i> <strong>Giá:</strong> @Model.Price.ToString("n0") x 1</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-md-pull-3">
+                        <div class="tour-detail-wrap">
+                            <div class="tour-detail-content">
+                                <h3>
+                                    @Model.Name
+                                </h3>
+                                <div class="tour-detail-option">
+                                    <h4>Thông Tin</h4>
+                                    @foreach (var item in Model.TourAttr)
+                                    {
+                                        <div class="check-ticket"><span class="pull-left"><i class="fa fa-check-circle" aria-hidden="true"></i>@item.AttrName</span><span class="pull-right">@item.Value</span></div>
+                                    }
+                                </div>
+                                <div class="tour-detail-date">
+                                    <form id="frmOrder" action="/cart/order" method="post">
+                                        @Html.AntiForgeryToken()
+                                        <h4>Chọn Ngày Sử Dụng Tour</h4>
+                                        <span>Ngày khởi hành</span>
+                                        <div class="start-date">
+                                            <input type='text' class="form-control" id='datetimepicker4' name="FromDate" /><i class="fa fa-calendar" aria-hidden="true"></i>
+                                            @Html.Hidden("Alias", Model.Alias)
+                                            @Html.Hidden("Name", Model.Name)
+                                            @Html.Hidden("Code", Model.Code)
+                                            @Html.Hidden("Image", Model.Image)
+                                            @Html.Hidden("Price", Model.Price)
+                                            @Html.Hidden("Id", Model.Id)
+                                        </div>
+                                        @*<div class="end-date">
+                                            <input type='text' class="form-control" id='datetimepicker5' name="ToDate" /><i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>*@
+                                        <div class="tour-btn"><button type="submit">Đặt tour</button></div>
+                                    </form>
+                                </div>
+                                <div class="tour-detail-desc">
+                                    <article id="reset-this-root">
+                                        <div>@Html.Raw(HttpUtility.HtmlDecode(Model.FullDescription))</div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section footerJS{
+    <script src="~/Assets/client/js/cartController.js"></script>
+}

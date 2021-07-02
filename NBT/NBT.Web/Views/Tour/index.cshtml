@@ -1,0 +1,115 @@
+﻿@model NBT.Web.Framework.Core.PaginationSet<NBT.Core.Domain.Catalog.Dto.TourDto>
+@{
+    ViewBag.Title = "Tour";
+    ViewBag.StyleHeader = "header header-style-2";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+    var modelCountry = ViewBag.countryRegions as IEnumerable<NBT.Core.Domain.Catalog.CountryRegion>;
+    var dot = "...";
+}
+
+<div id="example-wrapper">
+    @Html.Partial("Navigation")
+
+    <div class="div-box mb">
+        <div class="tour-wrapper">
+            <div class="container">
+                <div class="row">
+                    @{Html.RenderAction("ForeignCategory", "Tour");}
+                    <div class="col-md-9 col-sm-9">
+                        <div class="mt40-1 mb20 clearfix">
+                            <div class="col-md-5 col-xs-5">
+                                <div class="tour-filter">
+                                    <select class="duration" name="country">
+                                        @foreach (var item in modelCountry)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-xs-5">
+                                <div class="tour-filter">
+                                    <input type="number" name="totalDays" value="" min="1" max="30" />
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-xs-2">
+                                <button class="bttn-filter">Tìm</button>
+                            </div>
+                        </div>
+                        <div class="tour-wrap">
+                            <div class="tour-content">
+                                @foreach (var item in Model.Items)
+                                {
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="tour-img">
+                                            <a href="/tour/detail/@item.Alias"><img class="img-responsive" src="@item.Image" alt="@item.Name"></a>
+                                            <div class="country-title foldtl"><i class="fa fa-map-marker" aria-hidden="true"></i> @item.CountryRegionName, @item.StateProvinceName <span class="cut-edges"></span></div>
+                                        </div>
+                                        <div class="tour-info">
+                                            <h5>
+                                                <a href="/tour/detail/@item.Alias">
+                                                    @if (item.Name.Count() <= 50)
+                                                    {
+                                                        @item.Name
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.Name.Substring(0, 50);@dot
+                                                    }
+                                                </a>
+                                            </h5>
+                                            <div class="tour-price">
+                                                <span class="pull-left">Thời gian</span>
+                                                <span class="pull-right">Giá từ</span>
+                                            </div>
+                                            <div class="tour-price">
+                                                <span class="pull-left blue">
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i> @item.TotalDays Ngày
+                                                </span>
+                                                <span class="pull-right green">@item.Price.ToString("n0") vnđ</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="hpagination">
+                            <nav class="page-navigation">
+                                <ul class="pagination1">
+                                    @if (Model.TotalPages > 1)
+                                    {
+                                        var startPageIndex = Math.Max(1, Model.Page - 5 / 2);
+                                        var endPageIndex = Math.Min(Model.TotalPages, Model.Page + 5 / 2);
+                                        if (Model.Page > 1)
+                                        {
+                                            <li><a href="?pageIndex=@(Model.Page-1)@ViewBag.queryParams"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+
+                                        }
+                                        for (int i = startPageIndex; i <= endPageIndex; i++)
+                                        {
+                                            if (Model.Page == i)
+                                            {
+                                                <li class="active"><a href="?pageIndex=@i&@ViewBag.queryParams">@i</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a href="?pageIndex=@i@ViewBag.queryParams">@i</a></li>
+                                            }
+                                        }
+                                        if (Model.Page < Model.TotalPages)
+                                        {
+
+                                            <li><a href="?pageIndex=@(Model.Page+1)@ViewBag.queryParams"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                        }
+                                    }
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

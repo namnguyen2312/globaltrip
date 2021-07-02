@@ -1,0 +1,219 @@
+﻿<section class="content">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Thông tin tour</h3>
+            <button type="button" class="btn btn-info pull-right" ng-click="save()" ng-disabled="frm.$invalid">Lưu</button>
+        </div>
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-target="#productInfo" data-toggle="tab">Chi tiết du lịch</a></li>
+                <li><a data-target="#settings" data-toggle="tab">Thông tin</a></li>
+            </ul>
+            <form class="form-horizontal" novalidate name="frm" role="form">
+                <div class="tab-content">
+                    <div class="active tab-pane" id="productInfo">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Quốc gia</label>
+                                <div class="col-sm-10">
+                                    <ui-select ng-required="true" ng-model="data.CountryRegionId"  name="CountryRegion" theme="bootstrap" style="min-width: 300px;" title="Chọn quốc gia">
+                                        <ui-select-match allow-clear="true" placeholder="Chọn quốc gia">{{$select.selected.Name}}</ui-select-match>
+                                        <ui-select-choices repeat="item.Id as item in countryRegions | filter: $select.search">
+                                            <div ng-bind-html="item.Name | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error' : frm.area.$invalid && !frm.area.$pristine }">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Vùng miền VN</label>
+                                <div class="col-sm-10">
+                                    <ui-select ng-model="data.AreaId" name="area" theme="bootstrap" style="min-width: 300px;" title="Chọn vùng miền VN">
+                                        <ui-select-match allow-clear="true" placeholder="Vùng miền VN">{{$select.selected.Name}}</ui-select-match>
+                                        <ui-select-choices repeat="item.Id as item in areas | filter: $select.search">
+                                            <div ng-bind-html="item.Name | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Thành phố</label>
+                                <div class="col-sm-10">
+                                    <ui-select ng-required="true" ng-model="data.StateProvinceId" name="stateProvince" theme="bootstrap" style="min-width: 300px;" title="Chọn Tp">
+                                        <ui-select-match allow-clear="true" placeholder="Chọn Tp">{{$select.selected.Name}}</ui-select-match>
+                                        <ui-select-choices repeat="item.Id as item in stateProvinces | filter: {CountryRegionId: data.CountryRegionId}">
+                                            <div ng-bind-html="item.Name | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Loại tour</label>
+                                <div class="col-sm-10">
+                                    <ui-select ng-required="true" ng-model="data.TourType" name="tourType" theme="bootstrap" style="min-width: 300px;" title="Chọn loại tour">
+                                        <ui-select-match allow-clear="true" placeholder="Chọn loại tour">{{$select.selected.Name}}</ui-select-match>
+                                        <ui-select-choices repeat="item.Id as item in tourTypes">
+                                            <div ng-bind-html="item.Name | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Tên</label>
+                                <div class="col-sm-10">
+                                    <input type="text" maxlength="128" class="form-control" name="name" required ng-model="data.Name">
+                                    <span ng-show="frm.name.$invalid" class="help-block">Tên tour</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Tiêu đề sự kiện</label>
+                                <div class="col-sm-10">
+                                    <input type="text" maxlength="128" class="form-control" name="EventTitle" ng-model="data.EventTitle">
+                                    <span ng-show="frm.EventTitle.$invalid" class="help-block">Nhập tiêu đề sự kiện</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Mã tour</label>
+                                <div class="col-sm-10">
+                                    <input type="text" maxlength="128" class="form-control" name="code" required ng-model="data.Code">
+                                    <span ng-show="frm.code.$invalid" class="help-block">Mã tour</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Mô tả ngắn</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="ShortDescription" rows="2" maxlength="128" ng-model="data.ShortDescription"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Mô tả</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="FullDescription" ckeditor="ckeditorOptions" rows="20" ng-model="data.FullDescription"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Giá</label>
+                                <div class="col-sm-10">
+                                    <div class="input-number">
+                                        <input id="price" type="number" class="form-control" name="price" required ng-init="data.Price = 0" ng-model="data.Price" ng-maxlength="20">
+                                        <label for="price" class="form-control">{{data.Price | number:0}}</label>
+                                        <span ng-show="frm.Price.$invalid" class="help-block">Nhập giá</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Tổng ngày</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="totalDay" required ng-model="data.TotalDays" min="1" max="999" ng-init="data.TotalDays = 1" ng-maxlength="6">
+                                    <span ng-show="frm.totalDay.$invalid" class="help-block">Nhập tổng ngày</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Ngày khởi hành</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="dayBegin" required ng-model="data.DayBegin" ng-init="data.TotalDays = 1" ng-maxlength="128">
+                                    <span ng-show="frm.dayBegin.$invalid" class="help-block">Nhập ngày khởi hành</span>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Từ ngày</label>
+        <div class="col-sm-10">
+            <input type="text" maxlength="128" class="form-control" id="fromDate" name="fromDate" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask required ng-model="data.FromDate">
+            <span ng-show="frm.fromDate.$invalid" class="help-block">Nhập ngày</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Đến ngày</label>
+        <div class="col-sm-10">
+            <input type="text" maxlength="128" class="form-control" id="toDate" name="toDate" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask required ng-model="data.ToDate">
+            <span ng-show="frm.toDate.$invalid" class="help-block">Nhập ngày</span>
+        </div>
+    </div>-->
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Thứ tự hiển thị</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="displayOrder" required ng-model="data.DisplayOrder" min="-1" max="99999" ng-init="data.DisplayOrder = -1" ng-maxlength="6">
+                                    <span ng-show="frm.displayOrder.$invalid" class="help-block">Phải nhập thứ tự</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Ảnh</label>
+                                <div class="col-sm-1">
+                                    <ul class="list-inline">
+                                        <li><img src="{{data.Image}}" width="100" /></li>
+                                    </ul>
+                                    <button class="btn btn-success" type="button" ng-click="chooseImage(0)">Chọn ảnh...</button>
+                                    <input type="hidden" class="form-control" name="Image" ng-model="data.Image">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Ảnh lớn</label>
+                                <div class="col-sm-1">
+                                    <ul class="list-inline">
+                                        <li><img src="{{data.LargeImage}}" width="100" /></li>
+                                    </ul>
+                                    <button class="btn btn-success" type="button" ng-click="chooseImage(1)">Chọn ảnh...</button>
+                                    <input type="hidden" class="form-control" name="Image" ng-model="data.LargeImage">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Meta Keyword</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="KeywordSeo" maxlength="128" ng-model="data.KeywordSeo">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Meta Title</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="TitleSeo" maxlength="128" ng-model="data.TitleSeo">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Meta Description</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="DescriptionSeo" maxlength="128" ng-model="data.DescriptionSeo"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="IsShow" ng-model="data.IsShow" ng-checked="data.IsShow"> Hiển thị
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="IsHot" ng-model="data.IsHot" ng-checked="data.IsHot"> Tour hot
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="box-footer">
+                            <button ui-sref="tours" class="btn btn-default">Cancel</button>
+                            <button type="button" class="btn btn-info pull-right" ng-click="save()" ng-disabled="frm.$invalid">Lưu</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="settings">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th style="width: 5%">#</th>
+                                    <th style="width: 15%">Tên</th>
+                                    <th>Mô tả</th>
+                                </tr>
+                                <tr ng-repeat="item in dataAttr">
+                                    <td><input type="checkbox" ng-click="addAttr(item)" ng-model="item.Checked" name="all" /></td>
+                                    <td>{{item.Name}}</td>
+                                    <td>
+                                        <input class="input-group-sm" style="text-align:left;width:100%" ng-change="addValue(item)" ng-disabled="!item.Checked" ng-model="item.Value" type="text" maxlength="128" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

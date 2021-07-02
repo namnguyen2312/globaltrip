@@ -1,0 +1,48 @@
+﻿@model IEnumerable<NBT.Core.Domain.Blog.BlogPost>
+<div class="blog-content">
+    <div class="blog-cate-title"><h3>Bài viết mới</h3></div>
+    @if (Model.Count() > 0)
+    {
+        <div class="new-blog">
+            <img class="img-responsive" src="@Model.ToList()[0].Image" alt="@Model.ToList()[0].Title">
+            <h5><a href="/Blog/detail/@Model.ToList()[0].Alias">@Model.ToList()[0].Title</a></h5>
+        </div>
+    }
+    @if (Model.Count() > 1)
+    {
+        <div class="next-blog">
+            <div class="next-blog-content">
+                <div class="next-blog-img">
+                    <a href="/blog/detail/@Model.ToList()[1].Alias">
+                        <img class="img-responsive" src="@Model.ToList()[1].Image" alt="@Model.ToList()[1].Title">
+                    </a>
+                </div>
+                <div class="next-blog-info">
+                    <h5><a href="blog_detail.html">@Model.ToList()[1].Title</a></h5>
+                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>@Model.ToList()[1].CreatedDate.Value.ToString("dd-MM-yyyy")</span>
+                    <p>@Model.ToList()[1].ShortContent</p>
+                </div>
+            </div>
+            @if (Model.Count() > 2)
+            {
+                <div class="next-blog-content">
+                    <div class="next-blog-img">
+                        <a href="/blog/detail/@Model.ToList()[2].Alias">
+                            <img class="img-responsive" src="@Model.ToList()[2].Image" alt="@Model.ToList()[2].Title">
+                        </a>
+                    </div>
+                    <div class="next-blog-info">
+                        <h5><a href="blog_detail.html">@Model.ToList()[2].Title</a></h5>
+                        <span><i class="fa fa-clock-o" aria-hidden="true"></i>@Model.ToList()[2].CreatedDate.Value.ToString("dd-MM-yyyy")</span>
+                        <p>@Model.ToList()[2].ShortContent</p>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+        <div class="promotion">
+            @*<script type='text/javascript' src='https://www.rezb2b.com/affiliateCode/displayBlock.html?affiliate_id=1384'></script>*@
+            @*<img class="img-responsive" src="/images/poster-quang-cao-du-lich-01.jpg" alt="">*@
+        </div>
+</div>

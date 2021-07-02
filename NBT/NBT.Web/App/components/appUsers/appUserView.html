@@ -1,0 +1,100 @@
+﻿<section class="content">
+    <div class="row">
+        <form class="form-horizontal" role="form" novalidate name="frm" ng-submit="save()">
+            <div class="col-md-8">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title">Thông tin tài khoản</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group" ng-class="{ 'has-error' : frm.userName.$invalid && !frm.userName.$pristine }">
+                            <label class="col-sm-3 control-label">Tên đăng nhập</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="userName" class="form-control"
+                                       required reqired-message="Chưa nhập." ng-model="account.UserName" maxlength="64" ng-minlength="5" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : frm.fullName.$invalid && !frm.fullName.$pristine }">
+                            <label class="col-sm-3 control-label">Tên</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="fullName" class="form-control"
+                                       required reqired-message="Chưa nhập tên." ng-model="account.FullName" maxlength="64">
+                            </div>
+                        </div>
+                        <div ng-if="!isUpdate" class="form-group" ng-class="{ 'has-error' : frm.password.$invalid && !frm.password.$pristine }">
+                            <label class="col-sm-3 control-label">Mật khẩu</label>
+                            <div class="col-sm-9">
+                                <input type="password" name="password" class="form-control"
+                                       required reqired-message="Mật khẩu bắt buộc." ng-model="account.Password" maxlength="32" ng-minlength="6">
+                            </div>
+                        </div>
+                        <div ng-if="!isUpdate" class="form-group" ng-class="{ 'has-error' : frm.confirmPassword.$invalid && !frm.confirmPassword.$pristine }">
+                            <label class="col-sm-3 control-label">Nhập lại mật khẩu</label>
+                            <div class="col-sm-9">
+                                <input type="password" name="confirmPassword" match-password="password" class="form-control"
+                                       required reqired-message="Nhập lại mật khẩu." ng-model="account.confirm" maxlength="32" ng-minlength="6">
+                                <span ng-message="passwordMatch" ng-show="frm.confirmPassword.$invalid" class="help-block">Mật khẩu nhập lại không đúng</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Kích hoạt tài khoản</label>
+                            <div class="col-sm-9">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="IsActive" ng-model="account.IsActive" ng-checked="account.IsActive">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Địa chỉ</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="Address" class="form-control"
+                                       ng-model="account.Address" maxlength="128">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Số điện thoại</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="PhoneNumber" class="form-control"
+                                       ng-model="account.PhoneNumber" maxlength="20">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" name="Email" class="form-control"
+                                       ng-model="account.Email" maxlength="64">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-10">
+                                <a ui-sref="appUsers" class="btn btn-default">Hủy bỏ</a>
+                                <input type="submit" ng-disabled="frm.$invalid" class="btn btn-primary" value="Lưu lại" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-md-4">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title">Phân quyền</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="checkbox" ng-repeat="group in groups">
+                            <label>
+                                <input type="checkbox" checklist-model="account.Groups" checklist-value="group"> {{group.Name}}
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </form>
+    </div>
+    <!-- /.row -->
+</section>

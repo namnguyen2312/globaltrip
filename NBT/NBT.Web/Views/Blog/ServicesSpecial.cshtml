@@ -1,0 +1,101 @@
+﻿@model IEnumerable<NBT.Core.Domain.Blog.BlogPost>
+@{
+    int count = 0;
+    var model1 = Model.ToArray();
+}
+<div class="home-special-services">
+    <div class="container">
+        <h2 class="title-style text-center mb45">
+            <span class="title-left">DỊCH VỤ </span><span class="title-right">ĐẶC BIỆT</span><span class="desc">Lựa chọn tốt nhất</span>
+        </h2>
+        <div class="row">
+            <div class="col-md-9 col-sm-9">
+                <div class="special-services-wrap">
+                    @foreach (var item in Model)
+                    {
+                        if (count == 3)
+                        { break; }
+                        { count++; }
+                        <div class="col-md-4 col-sm-4 mb20">
+                            <div class="special-services-content">
+                                @*<h5 class="special-services-title"><a href="/blog/detail/@item.Alias">@item.Title</a></h5>*@
+                                <a href="/blog/detail/@item.Alias"><img src="@item.Image" alt="@item.Title" class="img-responsive" /></a>
+
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="special-services-wrap">
+                    @foreach (var item in Model)
+                    {
+                        if (Model.Count() > count)
+                        {
+                            { count++; }
+                            if (count == 6)
+                            { break; }
+
+                            <div class="col-md-6 col-sm-6 mb20">
+                                <div class="special-services-content">
+                                    @*<h5 class="special-services-title"><a href="/blog/detail/@model1[count-1].Alias">@model1[count - 1].Title</a></h5>*@
+                                    <a href="/blog/detail/@model1[count-1].Alias"><img src="@model1[count-1].Image" alt="@model1[count-1].Title" class="img-responsive" /></a>
+
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="block-wrap">
+                    <div class="block-content b1 clearfix">
+                        <div class="information1 float-left">
+                            <h5 class="block-country">Newyork USA</h5>
+                            <span id="usa-date" class="block-time"></span>
+                            <span class="block-gtm">GTM - 05</span>
+                        </div>
+                        <div class="block float-right">
+                            <span id="usa-time" class="timing"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-wrap">
+                    <div class="block-content b2 clearfix">
+                        <div class="information1 float-left">
+                            <h5 class="block-country">Sydney Aus</h5>
+                            <span id="au-date" class="block-time"></span>
+                            <span class="block-gtm">GTM + 11</span>
+                        </div>
+                        <div class="block float-right">
+                            <span id="au-time" class="timing"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-wrap">
+                    <div class="block-content b3 clearfix">
+                        <div class="information1 float-left">
+                            <h5 class="block-country">HK China</h5>
+                            <span id="hk-date" class="block-time"></span>
+                            <span class="block-gtm">GTM + 08</span>
+                        </div>
+                        <div class="block float-right">
+                            <span id="hk-time" class="timing"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-wrap">
+                    <div class="block-content b4 clearfix">
+                        <div class="information1 float-left">
+                            <h5 class="block-country">Tokyo Japan</h5>
+                            <span id="jp-date" class="block-time"></span>
+                            <span class="block-gtm">GTM + 09</span>
+                        </div>
+                        <div class="block float-right">
+                            <span id="jp-time" class="timing"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

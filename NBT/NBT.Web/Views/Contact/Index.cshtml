@@ -1,0 +1,95 @@
+﻿@model IEnumerable<NBT.Core.Domain.System.Converse>
+@{
+    var settings = ViewBag.WebSettings as NBT.Web.Framework.Models.WebSettingsVm;
+    ViewBag.StyleHeader = "header header-style-2";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+<div id="example-wrapper">
+    @Html.Partial("Navigation")
+
+    <div class="div-box mb">
+        <div class="contact-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="contact-wrap-content">
+                            <div class="contact-content">
+                                <div class="col-md-4 col-sm-4">
+                                    <h2>Hỗ Trợ</h2>
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="contact-skype mt20">
+                                            <div class="skype-img pull-left">
+                                                <img class="img-responsive" src="../images/75x75.jpg" alt="">
+                                            </div>
+                                            <div class="skype-info">
+                                                <h5>@item.FullName</h5>
+                                                <span class="service-apartment">Hỗ trợ dịch vụ</span>
+                                                <span><i class="fa fa-skype" aria-hidden="true" style="color: #00a9ff"></i> @item.NickName</span>
+                                                <span><i class="fa fa-phone" aria-hidden="true"></i> @item.Phone</span>
+                                                <span><i class="fa fa-envelope" aria-hidden="true"></i> @item.Email</span>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <h2>Social</h2>
+                                    <div class="contact-social text-center">
+                                        <ul>
+                                            <li><a href="@settings.Facebook"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="@settings.Twitter"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="@settings.Instagram"><i class="fa fa-instagram"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <h2>Địa Chỉ</h2>
+                                    <div class="contact-info">
+                                        <ul>
+                                            <li>
+                                                <i class="fa fa-map" aria-hidden="true"></i>
+                                                <b>Địa Chỉ</b>@settings.Address
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                                <b>Số Điện Thoại</b>@settings.Phone
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                <b>Email</b>@settings.CompanyEmail
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @{Html.RenderAction("ContactForm", "Contact");}
+
+    <div class="div-box">
+        <div id="map"></div>
+        <script>
+            var map;
+            function initMap() {
+                var uluru = { lat: 10.8192196, lng: 106.6991749 },
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 15,
+                        center: uluru
+                    });
+                var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH2hT2CK7o-nYbiVfVLEhBceS8VEeHbIQ&callback=initMap"
+                async defer></script>
+    </div>
+
+</div>

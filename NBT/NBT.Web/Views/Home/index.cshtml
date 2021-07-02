@@ -1,0 +1,71 @@
+﻿@model IEnumerable<NBT.Core.Domain.Catalog.Tour>
+@{
+    Layout = "~/Views/Shared/Layouts.cshtml";
+    ViewBag.StyleHeader = "header header-style-1";
+}
+@section footerJS{
+    <script>
+        //block time-zone
+        function countryTime() {
+            var usdate = moment().tz("America/New_York").format('dddd, MMM DD, YYYY');
+            var ustime = moment().tz("America/New_York").format('HH:mm');
+            var audate = moment().tz("Australia/Sydney").format('dddd, MMM DD, YYYY');
+            var autime = moment().tz("Australia/Sydney").format('HH:mm');
+            var hkdate = moment().tz("Asia/Hong_Kong").format('dddd, MMM DD, YYYY');
+            var hktime = moment().tz("Asia/Hong_Kong").format('HH:mm');
+            var jpdate = moment().tz("Asia/Tokyo").format('dddd, MMM DD, YYYY');
+            var jptime = moment().tz("Asia/Tokyo").format('HH:mm');
+            document.getElementById("usa-date").innerHTML = usdate;
+            document.getElementById("usa-time").innerHTML = ustime;
+            document.getElementById("au-date").innerHTML = audate;
+            document.getElementById("au-time").innerHTML = autime;
+            document.getElementById("hk-date").innerHTML = hkdate;
+            document.getElementById("hk-time").innerHTML = hktime;
+            document.getElementById("jp-date").innerHTML = jpdate;
+            document.getElementById("jp-time").innerHTML = jptime;
+        }
+        countryTime();
+        setInterval(countryTime, 10000);
+
+    </script>
+}
+<div id="example-wrapper">
+    <div class="div-box">
+        <div class="swiper-container main-slider">
+            <div class="swiper-wrapper">
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <a href="/tour/detail/@item.Alias" class="button sweep-to-right"><img src="@item.LargeImage" alt="@item.Name"></a>
+
+                        <div class="slider-content">
+                            @*<h2>@item.EventTitle</h2>
+                                <h1>@item.Name</h1>
+                                <h5>@item.TotalDays Ngày - @item.Price.ToString("n0") VNĐ</h5>
+                                <div class="btn-container"><a href="/tour/detail/@item.Alias" class="button sweep-to-right">Chi Tiết</a></div>*@
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
+        </div>
+    </div>
+    @Html.Partial("Navigation")
+
+
+    <div class="div-box mb">
+        @{Html.RenderAction("ServicesSpecial", "Blog");}
+    </div>
+
+    <div class="div-box mb">
+        @{Html.RenderAction("EventSpecial", "Blog");}
+    </div>
+
+    <div class="div-box mb">
+        @{Html.RenderAction("HomeBlog", "Blog");}
+    </div>
+</div>
